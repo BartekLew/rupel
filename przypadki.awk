@@ -27,12 +27,20 @@ BEGIN {
 
     print "\n\\vfill\n";
 
+    remaining = NF - 24;
+    rows = remaining / 2;
+    ru = 25+rows;
+    pl = 25;
+
     print "\\begin{tabular} { c c }";
     print "{\\bf po polsku / по-польски} & {\\bf po rusku / по-русски} \\\\";
-    print "{\\bf " $25 "} & {\\bf " $29 "} \\\\";
-    print $26 " & " $30 " \\\\";
-    print $27 " & " $31 " \\\\";
-    print $28 " & " $32 " \\\\";
+    print "{\\bf " $25 "} & {\\bf " $ru "} \\\\";
+    
+    while( ru < NF ) {
+        pl++; ru++;
+        print $pl " & " $ru " \\\\";
+    }
+
     print "\\end{tabular}";
     print "\\end{frame}";
 }
